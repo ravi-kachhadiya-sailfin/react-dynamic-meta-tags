@@ -34,6 +34,10 @@ app.get('/*', (req, res, next) => {
         .replace('__META_OG_DESCRIPTION__', post.description)
         .replace('__META_DESCRIPTION__', post.description)
         .replace('__META_OG_IMAGE__', post.thumbnail)
+        
+        .replace('__META_TWT_TITLE__', post.title)
+        .replace('__META_TWT_DESCRIPTION__', post.description)
+        .replace('__META_TWT_IMAGE__', post.thumbnail)
 
         return res.send(htmlData);
     });
