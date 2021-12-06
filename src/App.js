@@ -4,20 +4,20 @@ import './App.css';
 // import { useLocation } from "react-router-dom";
 
 function App() {
-  const [mounted, setMounted] = useState(false)
-  const { pathname } = window.location;
+  // const [mounted, setMounted] = useState(false)
+  // const { pathname } = window.location;
 
-  if (!mounted) {
-    console.log("path:", pathname, pathname.split('/')[1] === "post");
-    if (pathname.split('/')[1] === "post") {
-      const meta_title = document.getElementById("meta_title");
-      meta_title.setAttribute("content", "Testing meta title")
-    }
-  }
+  // if (!mounted) {
+  //   console.log("path:", pathname, pathname.split('/')[1] === "post");
+  //   if (pathname.split('/')[1] === "post") {
+  //     const meta_title = document.getElementById("meta_title");
+  //     meta_title.setAttribute("content", "Testing meta title")
+  //   }
+  // }
 
-  useEffect(() => {
-    setMounted(true)
-  }, [])
+  // useEffect(() => {
+  //   setMounted(true)
+  // }, [])
   
   return (
     <div className="App">
