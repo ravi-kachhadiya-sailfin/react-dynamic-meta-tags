@@ -44,36 +44,36 @@ app.get('/*', (req, res, next) => {
 });
 
 // here we serve the index.html page
-app.get('origin', (req, res, next) => {
-    fs.readFile(indexPath, 'utf8', (err, htmlData) => {
-        if (err) {
-            console.error('Error during file reading', err);
-            return res.status(404).end()
-        }
+// app.get('origin', (req, res, next) => {
+//     fs.readFile(indexPath, 'utf8', (err, htmlData) => {
+//         if (err) {
+//             console.error('Error during file reading', err);
+//             return res.status(404).end()
+//         }
 
-        const post = {
-            title: "Post",
-            description: "Main Title",
-            thumbnail: "https://storage.googleapis.com/pam-images/thumbnail/04cd2fc7-ee74-4153-bc19-31ef2362fda4.jpg"
-        },
+//         const post = {
+//             title: "Post",
+//             description: "Main Title",
+//             thumbnail: "https://storage.googleapis.com/pam-images/thumbnail/04cd2fc7-ee74-4153-bc19-31ef2362fda4.jpg"
+//         },
         
-        // inject meta tags
-        htmlData = htmlData.replace(
-            "<title>React App</title>",
-            `<title>${post.title}</title>`
-            )
-            .replace('__META_DESCRIPTION__', post.description)
-        .replace('__META_OG_TITLE__', post.title)
-        .replace('__META_OG_DESCRIPTION__', post.description)
-        .replace('__META_OG_IMAGE__', post.thumbnail)
+//         // inject meta tags
+//         htmlData = htmlData.replace(
+//             "<title>React App</title>",
+//             `<title>${post.title}</title>`
+//             )
+//             .replace('__META_DESCRIPTION__', post.description)
+//         .replace('__META_OG_TITLE__', post.title)
+//         .replace('__META_OG_DESCRIPTION__', post.description)
+//         .replace('__META_OG_IMAGE__', post.thumbnail)
         
-        .replace('__META_TWT_TITLE__', post.title)
-        .replace('__META_TWT_DESCRIPTION__', post.description)
-        .replace('__META_TWT_IMAGE__', post.thumbnail)
+//         .replace('__META_TWT_TITLE__', post.title)
+//         .replace('__META_TWT_DESCRIPTION__', post.description)
+//         .replace('__META_TWT_IMAGE__', post.thumbnail)
 
-        return res.send(htmlData);
-    });
-});
+//         return res.send(htmlData);
+//     });
+// });
 
 
 // listening...
