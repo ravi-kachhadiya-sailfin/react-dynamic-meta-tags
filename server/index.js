@@ -13,6 +13,39 @@ app.use(express.static(
     { maxAge: '30d' },
 ));
 
+app.get('*', (req, res, next) => {
+    fs.readFile(indexPath, 'utf8', (err, htmlData) => {
+        if (err) {
+            console.error('Error during file reading', err);
+            return res.status(404).end()
+        }
+        // get post info
+//         const postId = req.query.id;
+        const post = {
+         title: "Home",
+            description: "Home page is here",
+            thumbnail: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Logo_NIKE.svg/1200px-Logo_NIKE.svg.png",
+        };
+//         if(!post) return res.status(404).send("Post not found");
+        
+        // inject meta tags
+        htmlData = htmlData.replace(
+            "<title>React App</title>",
+            `<title>${post.title}</title>`
+        )
+        .replace('__META_OG_TITLE__', post.title)
+        .replace('__META_OG_DESCRIPTION__', post.description)
+        .replace('__META_DESCRIPTION__', post.description)
+        .replace('__META_OG_IMAGE__', post.thumbnail)
+        
+        .replace('__META_TWT_TITLE__', post.title)
+        .replace('__META_TWT_DESCRIPTION__', post.description)
+        .replace('__META_TWT_IMAGE__', post.thumbnail)
+
+        return res.send(htmlData);
+    });
+});
+
 // here we serve the index.html page
 app.get('/*', (req, res, next) => {
     fs.readFile(indexPath, 'utf8', (err, htmlData) => {
