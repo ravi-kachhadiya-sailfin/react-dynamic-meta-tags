@@ -51,7 +51,7 @@ app.get('/', (req, res, next) => {
 app.get('/*', (req, res, next) => {
     console.log("reuq...")
     // console.log(req);
-    var url1 = "https://pam-api-uat.med.stanford.edu/";
+    var url1 = "https://pam-api-prod.med.stanford.edu/";
     let options = {
         url: url1 + "api/v1/tool/details?toolId=3d5f006c-dcc1-4bd4-99a9-e3adda6fda42",
         method: "GET"
